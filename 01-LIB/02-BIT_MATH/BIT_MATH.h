@@ -9,8 +9,8 @@
 
 //sitting or clear or toggle or read a specific  bit 
 #define SET_BIT(VAR,BIT)   VAR |=   (1 << (BIT))      // for sitting bit make OR"|" with one shifted lift by the pin number  
-#define CLR_BIT(VAR,BIT)   VAR &=  ~(1 << (bit))     // for clearing bit make AND"&" with the complement of one shifted lift by the pin number 
-#define TOG_BIT(VAR,BIT)   VAR ^=   (1 << (bit))    // for toggling bit make XOR"^" with the one shifted lift by the pin number
+#define CLR_BIT(VAR,BIT)   VAR &=  ~(1 << (BIT))     // for clearing bit make AND"&" with the complement of one shifted lift by the pin number 
+#define TOG_BIT(VAR,BIT)   VAR ^=   (1 << (BIT))    // for toggling bit make XOR"^" with the one shifted lift by the pin number
 #define READ_BIT(VAR,BIT)  ((VAR >> BIT) & 1)      // for reading bit shift the VAR right with bit number then and the answer with one
 #define GET_BIT(VAR,BIT)   ((VAR >> BIT) & 1)     // for reading bit shift the VAR right with bit number then and the answer with one
 

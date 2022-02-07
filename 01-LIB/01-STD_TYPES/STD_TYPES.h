@@ -7,6 +7,8 @@
 #ifndef STD_TYPES_H
 #define STD_TYPES_H
 
+#define DUMMY_DATA	0xFF
+
 
 // My typeDefs
 
@@ -25,6 +27,9 @@ typedef signed   long long  sint64;          // New name for signed long long as
 typedef float         float32;          // New name for float as float32
 typedef double        float64;         // New name for double as float64
 typedef long double   float96;    // New name for long double as float96
+
+
+
 
 
 
