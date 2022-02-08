@@ -20,11 +20,11 @@
 #include "GPIO_config.h"
 
 /********************************************************************************************************/
-/*	Function Name        : GPIO_vSetPinMode                                                         */
-/*	Function Returns     : void                                                                     */
-/*	Function Arguments   : unsigned char copy_u8PortName unsigned char copy_u8PinNumber             */
-/*							unsigned char copy_u8copy_u8Mode                */
-/*	Function Description : Set pin copy_u8Mode                                                      */
+/*	Function Name        : GPIO_vSetPinMode                                                             */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned char copy_u8PortName unsigned char copy_u8PinNumber                 */
+/*							unsigned char copy_u8copy_u8Mode                                            */
+/*	Function Description : Set pin copy_u8Mode                                                          */
 /********************************************************************************************************/
 void GPIO_vSetPinMode(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_u8Mode)
 {
@@ -46,17 +46,17 @@ void GPIO_vSetPinMode(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_
 						/*                    if it = 0 I will clear the Bit                        */
 						/*                the Bit Number = (copy_u8PinNumber*4+i)                   */
 						/****************************************************************************/
-						/*	for (i=0;i<4;i++)                                                   */
-						/*	{                                                                   */
-						/*		if ((copy_u8Mode>>i)&1)                                     */
-						/*		{                                                           */
-						/*		 	SET_BIT(PORTA_CRL , ((copy_u8PinNumber*4)+i));	    */
-						/*		}                                                           */
-						/*		else                                                        */
-						/*		{                                                           */
-						/*			CLR_BIT(PORTA_CRL , ((copy_u8PinNumber*4)+i));      */
-						/*		}                                                           */
-						/*	}                                                                   */
+						/*	for (i=0;i<4;i++)                                                       */
+						/*	{                                                                       */
+						/*		if ((copy_u8Mode>>i)&1)                                             */
+						/*		{                                                                   */
+						/*		 	SET_BIT(PORTA_CRL , ((copy_u8PinNumber*4)+i));	                */
+						/*		}                                                                   */
+						/*		else                                                                */
+						/*		{                                                                   */
+						/*			CLR_BIT(PORTA_CRL , ((copy_u8PinNumber*4)+i));                  */
+						/*		}                                                                   */
+						/*	}                                                                       */
 						/****************************************************************************/
 						/*                              you Can also use this code                  */
 						/****************************************************************************/
@@ -473,6 +473,67 @@ void GPIO_vToggle(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
 	/*********************************************************************************************************/
 		case PORTG 	:
 					TOG_BIT(PORTG_ODR, copy_u8PinNumber);
+					break;
+	/*********************************************************************************************************/
+		default		: /* Return Error */ break;
+	}
+}
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name 		: GPIO_vLockPin																	*/
+/*	Function Returns	: void																			*/
+/*	Function Arguments	: unsigned char copy_u8PortName unsigned char copy_u8PinNumber					*/
+/*	Function Description: Lock the Mode of Pin															*/
+/********************************************************************************************************/
+void GPIO_vLockPin(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
+{
+	switch(copy_u8PortName)
+	{
+	/*********************************************************************************************************/
+	/*                                            PORTA                                                      */
+	/*********************************************************************************************************/
+		case PORTA 	:
+					SET_BIT(PORTA_LCKR, copy_u8PinNumber); 
+					break;
+	/*********************************************************************************************************/
+	/*                                            PORTB                                                      */
+	/*********************************************************************************************************/
+		case PORTB 	:
+					SET_BIT(PORTB_LCKR, copy_u8PinNumber);
+					break;
+	/*********************************************************************************************************/
+	/*                                            PORTC                                                      */
+	/*********************************************************************************************************/
+		case PORTC 	:
+					SET_BIT(PORTC_LCKR, copy_u8PinNumber);
+					break;
+	/*********************************************************************************************************/
+	/*                                            PORTD                                                      */
+	/*********************************************************************************************************/
+		case PORTD 	:
+					SET_BIT(PORTD_LCKR, copy_u8PinNumber);
+					break;
+	/*********************************************************************************************************/
+	/*                                            PORTE                                                      */
+	/*********************************************************************************************************/
+		case PORTE 	:
+					SET_BIT(PORTE_LCKR, copy_u8PinNumber);
+					break;
+	/*********************************************************************************************************/
+	/*                                            PORTF                                                      */
+	/*********************************************************************************************************/
+		case PORTF 	:
+					SET_BIT(PORTF_LCKR, copy_u8PinNumber);
+					break;
+	/*********************************************************************************************************/
+	/*                                            PORTG                                                      */
+	/*********************************************************************************************************/
+		case PORTG 	:
+					SET_BIT(PORTG_LCKR, copy_u8PinNumber);
 					break;
 	/*********************************************************************************************************/
 		default		: /* Return Error */ break;
