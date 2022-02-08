@@ -81,9 +81,9 @@ void GPIO_vWritePin(uint8 portName, uint8 pinNumer, uint8 value);
 
 
 /********************************************************************************************************/
-/*	Function Name 		: GPIO_u8GetPinVal																*/
-/*	Function Returns	: unsigned char																	*/
-/*	Function Arguments	: unsigned char portName unsigned char copy_u8PinNumber 						*/
+/*	Function Name 		: GPIO_u8GetPinVal                                                                */
+/*	Function Returns	: unsigned char	                                                                  */
+/*	Function Arguments	: unsigned char portName unsigned char copy_u8PinNumber                         */
 /*	Function Description: Return Pin value                                                              */
 /********************************************************************************************************/
 uint8 GPIO_u8GetPinVal(uint8 portName, uint8 pinNumer);
@@ -94,10 +94,10 @@ uint8 GPIO_u8GetPinVal(uint8 portName, uint8 pinNumer);
 
 
 /********************************************************************************************************/
-/*	Function Name 		: GPIO_vToggle																	*/
-/*	Function Returns	: void																			*/
-/*	Function Arguments	: unsigned char copy_u8PortName unsigned char copy_u8PinNumber					*/
-/*	Function Description: toggle the LED 																*/
+/*	Function Name 		  : GPIO_vToggle                                                                  */
+/*	Function Returns	  : void                                                                          */
+/*	Function Arguments	: unsigned char copy_u8PortName unsigned char copy_u8PinNumber         					*/
+/*	Function Description: toggle the LED 																                                */
 /********************************************************************************************************/
 void GPIO_vToggle(uint8 copy_u8PortName, uint8 copy_u8PinNumber);
 
