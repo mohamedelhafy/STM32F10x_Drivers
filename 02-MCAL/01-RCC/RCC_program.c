@@ -97,6 +97,10 @@ void RCC_vInitSysClock(void)
 	#else     
 		#error ("you Choose wrong Clock Type")
 	#endif
+
+
+// Handling the PLL MUL 
+// Handling the Bus Pre 
 }
 
 

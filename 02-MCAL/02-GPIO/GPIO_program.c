@@ -13,6 +13,7 @@
 
 // including the Needed Interface files from lower layers 
 // here there is no lower layers
+#include "RCC_interface.h"
 
 // including My own Driver Files in this order
 #include "GPIO_interface.h"
@@ -26,7 +27,7 @@
 /*							unsigned char copy_u8copy_u8Mode                                            */
 /*	Function Description : Set pin copy_u8Mode                                                          */
 /********************************************************************************************************/
-void GPIO_vSetPinMode(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_u8Mode)
+void GPIO_vSetPinMode(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber, uint8 copy_u8Mode)
 {
 
 	switch(copy_u8PortName)
@@ -214,7 +215,7 @@ void GPIO_vSetPinMode(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_
 /*	Function Arguments   : unsigned char portName unsigned char pinNumber unsigned char valwe        */
 /*	Function Description : Set pin value                                                             */
 /*********************************************************************************************************/
-void GPIO_vWritePin(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_u8Value)
+void GPIO_vWritePin(portName_t copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_u8Value)
 {
 	switch(copy_u8PortName)
 	{
@@ -366,7 +367,7 @@ void GPIO_vWritePin(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_u8
 /*	Function Arguments   : unsigned char copy_u8PortName unsigned char copy_u8PinNumber             */
 /*	Function Description : Return Pin value                                                         */
 /********************************************************************************************************/
-uint8 GPIO_u8GetPinVal(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
+uint8 GPIO_u8GetPinVal(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber)
 {
 	uint8 LOC_u8Result = DUMMY_DATA ;
 	switch(copy_u8PortName)
@@ -428,7 +429,7 @@ uint8 GPIO_u8GetPinVal(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
 /*	Function Arguments   : unsigned char copy_u8PortName unsigned char copy_u8PinNumber             */
 /*	Function Description : toggle the Pin output                                                    */
 /********************************************************************************************************/
-void GPIO_vToggle(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
+void GPIO_vToggle(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber)
 {
 	switch(copy_u8PortName)
 	{
@@ -489,7 +490,7 @@ void GPIO_vToggle(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
 /*	Function Arguments	: unsigned char copy_u8PortName unsigned char copy_u8PinNumber					*/
 /*	Function Description: Lock the Mode of Pin															*/
 /********************************************************************************************************/
-void GPIO_vLockPin(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
+void GPIO_vLockPin(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber)
 {
 	switch(copy_u8PortName)
 	{
@@ -537,5 +538,53 @@ void GPIO_vLockPin(uint8 copy_u8PortName, uint8 copy_u8PinNumber)
 					break;
 	/*********************************************************************************************************/
 		default		: /* Return Error */ break;
+	}
+}
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name 		: GPIO_vEnablePort                                                              */
+/*	Function Returns	: void                                                                          */
+/*	Function Arguments	: unsigned char copy_u8PortName                                                 */
+/*	Function Description: Enable clock For port                                                         */
+/********************************************************************************************************/
+void GPIO_vEnablePort(uint8 copy_u8PortName)
+{
+	switch(copy_u8PortName)
+	{
+		case PORTA : RCC_vEnableClock(RCC_APB2, RCC_IOPA_EN); break; // Enable Clock for Port A
+		case PORTB : RCC_vEnableClock(RCC_APB2, RCC_IOPB_EN); break; // Enable Clock for Port B
+		case PORTC : RCC_vEnableClock(RCC_APB2, RCC_IOPC_EN); break; // Enable Clock for Port C
+		case PORTD : RCC_vEnableClock(RCC_APB2, RCC_IOPD_EN); break; // Enable Clock for Port D
+		case PORTE : RCC_vEnableClock(RCC_APB2, RCC_IOPE_EN); break; // Enable Clock for Port E
+		case PORTF : RCC_vEnableClock(RCC_APB2, RCC_IOPF_EN); break; // Enable Clock for Port F
+		case PORTG : RCC_vEnableClock(RCC_APB2, RCC_IOPG_EN); break; // Enable Clock for Port G
+	}
+}
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name 		: GPIO_vEnablePort                                                              */
+/*	Function Returns	: void                                                                          */
+/*	Function Arguments	: unsigned char copy_u8PortName                                                 */
+/*	Function Description: Enable clock For port                                                         */
+/********************************************************************************************************/
+void GPIO_vDisablePort(uint8 copy_u8PortName)
+{
+	switch(copy_u8PortName)
+	{
+		case PORTA : RCC_vDisableClock(RCC_APB2, RCC_IOPA_EN); break; // Disable Clock for Port A
+		case PORTB : RCC_vDisableClock(RCC_APB2, RCC_IOPB_EN); break; // Disable Clock for Port B
+		case PORTC : RCC_vDisableClock(RCC_APB2, RCC_IOPC_EN); break; // Disable Clock for Port C
+		case PORTD : RCC_vDisableClock(RCC_APB2, RCC_IOPD_EN); break; // Disable Clock for Port D
+		case PORTE : RCC_vDisableClock(RCC_APB2, RCC_IOPE_EN); break; // Disable Clock for Port E
+		case PORTF : RCC_vDisableClock(RCC_APB2, RCC_IOPF_EN); break; // Disable Clock for Port F
+		case PORTG : RCC_vDisableClock(RCC_APB2, RCC_IOPG_EN); break; // Disable Clock for Port G
 	}
 }
