@@ -9,6 +9,75 @@
 #define NVIC_INTERFACE_H
 
 
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vEnableInterrupt                                                        */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
+/*	Function Description : Set pin copy_u8Mode                                                          */
+/********************************************************************************************************/
+void NVIC_vEnableInterrupt(uint8 copy_u8IntNumber);
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vDisableInterrupt                                                       */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
+/*	Function Description : Disable interrupt ensble in NVIC                                             */
+/********************************************************************************************************/
+void NVIC_vDisableInterrupt(uint8 copy_u8IntNumber);
+
+
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vSetPendingFlag                                                         */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
+/*	Function Description : Set pending Flag                                                             */
+/********************************************************************************************************/
+void NVIC_vSetPendingFlag(uint8 copy_u8IntNumber);
+
+
+
+
+
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vClearpendingFlag                                                       */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
+/*	Function Description : Clear pending Flag                                                           */
+/********************************************************************************************************/
+void NVIC_vClearPendingFlag(uint8 copy_u8IntNumber);
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_u8GetActiveFlag                                                         */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
+/*	Function Description : Get Active Flag that told me if this int is executed                         */
+/********************************************************************************************************/
+uint8 NVIC_u8GetActiveFlag(uint8 copy_u8IntNumber);
+
+
+
+
+/***************    NVIC pins Order    *********************/
 #define NVIC_SW_PERIORITY_WWDG               0
 #define NVIC_SW_PERIORITY_PVD                1
 #define NVIC_SW_PERIORITY_TAMPER             2
