@@ -6,7 +6,7 @@
  
 
 
-#Assumptions:
+# Assumptions:
 > Packet Len <= 127 + 2, one byte only.
 > QoS0/1
 > For public brokers.
