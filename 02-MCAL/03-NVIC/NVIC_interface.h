@@ -48,12 +48,6 @@ void NVIC_vSetPendingFlag(uint8 copy_u8IntNumber);
 
 
 
-
-
-
-
-
-
 /********************************************************************************************************/
 /*	Function Name        : NVIC_vClearpendingFlag                                                       */
 /*	Function Returns     : void                                                                         */
@@ -73,6 +67,60 @@ void NVIC_vClearPendingFlag(uint8 copy_u8IntNumber);
 /*	Function Description : Get Active Flag that told me if this int is executed                         */
 /********************************************************************************************************/
 uint8 NVIC_u8GetActiveFlag(uint8 copy_u8IntNumber);
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vSetGroupSubgroupComp                                                   */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : signed char copy_s8IntId unsigned char copy_u8periority                      */
+/*	Function Description : Get Active Flag that told me if this int is executed                         */
+/********************************************************************************************************/
+void NVIC_vSetGroupSubgroupComp(uint32 copy_u32GroupSubgroupComp);
+
+
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vSetGroupSubType                                                        */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned long copy_u32GroupSubgroupType                                      */
+/*	Function Description : Set Sw periority                                                             */
+/********************************************************************************************************/
+void NVIC_vSetGroupSubType(uint32 copy_u32GroupSubgroupType);
+
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vSetSWPeriority                                                         */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : signed char copy_s8IntId unsigned char copy_u8periority                      */
+/*	Function Description : Set Sw periority                                                             */
+/********************************************************************************************************/
+void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uint8 copy_u8SubgroupPeriority);
+
+
+
+
+
+
+
+/***************    Group Types    *********************/
+#define GROUP4_AND_SUB0                0x05FA0300  // 4-bit for group and 0-bit for sub
+#define GROUP3_AND_SUB1                0x05FA0400  // 3-bit for group and 1-bit for sub
+#define GROUP2_AND_SUB2                0x05FA0500  // 2-bit for group and 2-bit for sub
+#define GROUP1_AND_SUB3                0x05FA0600  // 1-bit for group and 3-bit for sub
+#define GROUP0_AND_SUB4                0x05FA0700  // 0-bit for group and 4-bit for sub
 
 
 

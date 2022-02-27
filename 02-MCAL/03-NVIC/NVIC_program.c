@@ -209,3 +209,49 @@ uint8 NVIC_u8GetActiveFlag(uint8 copy_u8IntNumber)
 	return Loc_u8Result; 
 }
 
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vSetGroupSubType                                                        */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : unsigned long copy_u32GroupSubgroupType                                      */
+/*	Function Description : Set Sw periority                                                             */
+/********************************************************************************************************/
+void NVIC_vSetGroupSubType(uint32 copy_u32GroupSubgroupType)
+{
+	/* set the Comp Of group and Sub Group */
+	SBC_AIRCR = copy_u32GroupSubgroupType ;
+}
+
+
+
+
+
+
+
+
+/********************************************************************************************************/
+/*	Function Name        : NVIC_vSetSWPeriority                                                         */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : signed char copy_s8IntId unsigned char copy_u8periority                      */
+/*	Function Description : Set Sw periority                                                             */
+/********************************************************************************************************/
+void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uint8 copy_u8SubgroupPeriority)
+{
+	uint8 Loc_u8Periority = copy_u8SubgroupPeriority|copy_u8GroupPeriority ;
+	
+	/* External peripheral */
+
+	if (copy_s8IntId >= 0)
+	{
+		NVIC_IPR[copy_s8IntId] = Loc_u8Periority << 4 ; // Set periority for InId
+	}
+	else
+	{
+		/* core peripheral */
+	}
+}

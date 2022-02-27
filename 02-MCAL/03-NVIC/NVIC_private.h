@@ -9,6 +9,8 @@
 #define NVIC_PRIVATE_H
 /* 0xE000E100 Base Adress */
 #define NVIC_BASE_ADDRESS   0xE000E100
+/* 0xE000ED00 Base Adress */
+#define SBC_BASE_ADDRESS    0xE000ED00
 
 
 /**************************     Set Offsets     **************************/
@@ -44,6 +46,17 @@
 
 
 
+
+/*   Interrupt periority Regs offset   */
+#define NVIC_IPR_OFFSET     0x300
+
+
+
+
+#define SBC_AIRCR_OFFSET     0x0C
+
+
+
 /**************************     Register definition     *********************************/
 /*  Set interrupt Regs */
 #define NVIC_ISER0          *((volatile uint32*)(NVIC_BASE_ADDRESS + NVIC_ISER0_OFFSET))
@@ -75,5 +88,10 @@
 #define NVIC_IABR2          *((volatile uint32*)(NVIC_BASE_ADDRESS + NVIC_IABR2_OFFSET))
 
 
+
+/*   Interrupt periority Regs offset   */
+#define NVIC_IPR             ((volatile uint8* )  (NVIC_BASE_ADDRESS + NVIC_IPR_OFFSET))
+
+#define SBC_AIRCR           *((volatile uint32*)  (SBC_BASE_ADDRESS + SBC_AIRCR_OFFSET)) 
 
 #endif   // NVIC_PRIVATE_H
