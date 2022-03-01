@@ -1,7 +1,7 @@
 /******************************************************************************************/
 /* Author  : Mohamed Farag Elhafy                                                         */
-/* Date    : 9 FEB 2022                                                                   */
-/* Version : V01                                                                          */
+/* Date    : 1 MAR 2022                                                                   */
+/* Version : V02                                                                          */
 /******************************************************************************************/
 
 
@@ -31,7 +31,7 @@
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Set interrupt ensble in NVIC                                                 */
 /********************************************************************************************************/
-void NVIC_vEnableInterrupt(uint8 copy_u8IntNumber)
+void NVIC_vEnableInterrupt(E_PinPerioity_t copy_u8IntNumber)
 {
 	if (copy_u8IntNumber<31)
 	{
@@ -65,7 +65,7 @@ void NVIC_vEnableInterrupt(uint8 copy_u8IntNumber)
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Disable interrupt ensble in NVIC                                             */
 /********************************************************************************************************/
-void NVIC_vDisableInterrupt(uint8 copy_u8IntNumber)
+void NVIC_vDisableInterrupt(E_PinPerioity_t copy_u8IntNumber)
 {
 	if (copy_u8IntNumber<31)
 	{
@@ -106,7 +106,7 @@ void NVIC_vDisableInterrupt(uint8 copy_u8IntNumber)
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Set pending Flag                                                             */
 /********************************************************************************************************/
-void NVIC_vSetPendingFlag(uint8 copy_u8IntNumber)
+void NVIC_vSetPendingFlag(E_PinPerioity_t copy_u8IntNumber)
 {
 	if (copy_u8IntNumber<31)
 	{
@@ -147,7 +147,7 @@ void NVIC_vSetPendingFlag(uint8 copy_u8IntNumber)
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Clear pending Flag                                                           */
 /********************************************************************************************************/
-void NVIC_vClearPendingFlag(uint8 copy_u8IntNumber)
+void NVIC_vClearPendingFlag(E_PinPerioity_t copy_u8IntNumber)
 {
 	if (copy_u8IntNumber<31)
 	{
@@ -184,23 +184,23 @@ void NVIC_vClearPendingFlag(uint8 copy_u8IntNumber)
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Get Active Flag that told me if this int is executed                         */
 /********************************************************************************************************/
-uint8 NVIC_u8GetActiveFlag(uint8 copy_u8IntNumber)
+uint8 NVIC_u8GetActiveFlag(E_PinPerioity_t copy_u8IntNumber)
 {
 	uint8 Loc_u8Result;
 	if (copy_u8IntNumber<31)
 	{
-		Loc_u8Result = GET_BIT(NVIC_IBAR0 , copy_u8IntNumber);
+		Loc_u8Result = GET_BIT(NVIC_IABR0 , copy_u8IntNumber);
 	}
 	else if (copy_u8IntNumber < 63)
 	{
 		copy_u8IntNumber-=32;
-		Loc_u8Result = GET_BIT(NVIC_IBAR1 , copy_u8IntNumber);
+		Loc_u8Result = GET_BIT(NVIC_IABR1 , copy_u8IntNumber);
 
 	}
 	else if(copy_u8IntNumber < 67)
 	{
 		copy_u8IntNumber-=64;
-		Loc_u8Result = GET_BIT(NVIC_IBAR2 , copy_u8IntNumber);
+		Loc_u8Result = GET_BIT(NVIC_IABR2 , copy_u8IntNumber);
 	}
 	else
 	{

@@ -1,7 +1,7 @@
 /******************************************************************************************/
 /* Author  : Mohamed Farag Elhafy                                                         */
-/* Date    : 9 FEB 2022                                                                   */
-/* Version : V01                                                                          */
+/* Date    : 1 MAR 2022                                                                   */
+/* Version : V02                                                                          */
 /******************************************************************************************/
 
 
@@ -15,7 +15,7 @@
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Set pin copy_u8Mode                                                          */
 /********************************************************************************************************/
-void NVIC_vEnableInterrupt(uint8 copy_u8IntNumber);
+void NVIC_vEnableInterrupt(E_PinPerioity_t copy_u8IntNumber);
 
 
 
@@ -27,7 +27,7 @@ void NVIC_vEnableInterrupt(uint8 copy_u8IntNumber);
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Disable interrupt ensble in NVIC                                             */
 /********************************************************************************************************/
-void NVIC_vDisableInterrupt(uint8 copy_u8IntNumber);
+void NVIC_vDisableInterrupt(E_PinPerioity_t copy_u8IntNumber);
 
 
 
@@ -42,7 +42,7 @@ void NVIC_vDisableInterrupt(uint8 copy_u8IntNumber);
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Set pending Flag                                                             */
 /********************************************************************************************************/
-void NVIC_vSetPendingFlag(uint8 copy_u8IntNumber);
+void NVIC_vSetPendingFlag(E_PinPerioity_t copy_u8IntNumber);
 
 
 
@@ -54,7 +54,7 @@ void NVIC_vSetPendingFlag(uint8 copy_u8IntNumber);
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Clear pending Flag                                                           */
 /********************************************************************************************************/
-void NVIC_vClearPendingFlag(uint8 copy_u8IntNumber);
+void NVIC_vClearPendingFlag(E_PinPerioity_t copy_u8IntNumber);
 
 
 
@@ -66,7 +66,7 @@ void NVIC_vClearPendingFlag(uint8 copy_u8IntNumber);
 /*	Function Arguments   : unsigned char copy_u8IntNumber                                               */
 /*	Function Description : Get Active Flag that told me if this int is executed                         */
 /********************************************************************************************************/
-uint8 NVIC_u8GetActiveFlag(uint8 copy_u8IntNumber);
+uint8 NVIC_u8GetActiveFlag(E_PinPerioity_t copy_u8IntNumber);
 
 
 
@@ -124,8 +124,75 @@ void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uin
 
 
 
+/***************    NVIC pins Order    *********************/
+typedef enum 
+{
+	NVIC_SW_PERIORITY_WWDG            =0,
+	NVIC_SW_PERIORITY_PVD               ,
+	NVIC_SW_PERIORITY_TAMPER            ,
+	NVIC_SW_PERIORITY_RTC               ,
+	NVIC_SW_PERIORITY_FLASH             ,
+	NVIC_SW_PERIORITY_RCC               ,
+	NVIC_SW_PERIORITY_EXTI0             ,
+	NVIC_SW_PERIORITY_EXTI1             ,
+	NVIC_SW_PERIORITY_EXTI2             ,
+	NVIC_SW_PERIORITY_EXTI3             ,
+	NVIC_SW_PERIORITY_EXTI4             ,
+	NVIC_SW_PERIORITY_DMA1_Channel1     ,
+	NVIC_SW_PERIORITY_DMA1_Channel2     ,
+	NVIC_SW_PERIORITY_DMA1_Channel3     ,
+	NVIC_SW_PERIORITY_DMA1_Channel4     ,
+	NVIC_SW_PERIORITY_DMA1_Channel5     ,
+	NVIC_SW_PERIORITY_DMA1_Channel6     ,
+	NVIC_SW_PERIORITY_DMA1_Channel7     ,
+	NVIC_SW_PERIORITY_ADC1_2            ,
+	NVIC_SW_PERIORITY_CAN1_TX           ,
+	NVIC_SW_PERIORITY_CAN1_RX0          ,
+	NVIC_SW_PERIORITY_CAN1_RX1          ,
+	NVIC_SW_PERIORITY_CAN1_SCE          ,
+	NVIC_SW_PERIORITY_EXTI9_5           ,
+	NVIC_SW_PERIORITY_TIM1_BRK          ,
+	NVIC_SW_PERIORITY_TIM1_UP           ,
+	NVIC_SW_PERIORITY_TIM1_TRG_COM      ,
+	NVIC_SW_PERIORITY_TIM1_CC           ,
+	NVIC_SW_PERIORITY_TIM2              ,
+	NVIC_SW_PERIORITY_TIM3              ,
+	NVIC_SW_PERIORITY_TIM4              ,
+	NVIC_SW_PERIORITY_I2C1_EV           ,
+	NVIC_SW_PERIORITY_I2C1_ER           ,
+	NVIC_SW_PERIORITY_I2C2_EV           ,
+	NVIC_SW_PERIORITY_I2C2_ER           ,
+	NVIC_SW_PERIORITY_SPI1              ,
+	NVIC_SW_PERIORITY_SPI2              ,
+	NVIC_SW_PERIORITY_USART1            ,
+	NVIC_SW_PERIORITY_USART2            ,
+	NVIC_SW_PERIORITY_USART3            ,
+	NVIC_SW_PERIORITY_EXTI15_10         ,
+	NVIC_SW_PERIORITY_RTCAlarm          ,
+	NVIC_SW_PERIORITY_OTG_FS_WKUP       ,
+
+	NVIC_SW_PERIORITY_TIM5           =50,   
+	NVIC_SW_PERIORITY_SPI3              ,
+	NVIC_SW_PERIORITY_UART4             ,
+	NVIC_SW_PERIORITY_UART5             ,
+	NVIC_SW_PERIORITY_TIM6              ,
+	NVIC_SW_PERIORITY_TIM7              ,
+	NVIC_SW_PERIORITY_DMA2_Channel1     ,
+	NVIC_SW_PERIORITY_DMA2_Channel2     ,
+	NVIC_SW_PERIORITY_DMA2_Channel3     ,
+	NVIC_SW_PERIORITY_DMA2_Channel4     ,
+	NVIC_SW_PERIORITY_DMA2_Channel5     ,
+	NVIC_SW_PERIORITY_ETH               ,
+	NVIC_SW_PERIORITY_ETH_WKUP          ,
+	NVIC_SW_PERIORITY_CAN2_TX           ,
+	NVIC_SW_PERIORITY_CAN2_RX0          ,
+	NVIC_SW_PERIORITY_CAN2_RX1          ,
+	NVIC_SW_PERIORITY_CAN2_SCE          ,
+	NVIC_SW_PERIORITY_OTG_FS             
+}E_PinPerioity_t;
 
 /***************    NVIC pins Order    *********************/
+/*
 #define NVIC_SW_PERIORITY_WWDG               0
 #define NVIC_SW_PERIORITY_PVD                1
 #define NVIC_SW_PERIORITY_TAMPER             2
@@ -168,7 +235,8 @@ void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uin
 #define NVIC_SW_PERIORITY_USART3             39
 #define NVIC_SW_PERIORITY_EXTI15_10          40 
 #define NVIC_SW_PERIORITY_RTCAlarm           41
-#define NVIC_SW_PERIORITY_OTG_FS_WKUP        42   
+#define NVIC_SW_PERIORITY_OTG_FS_WKUP        42
+
 #define NVIC_SW_PERIORITY_TIM5               50
 #define NVIC_SW_PERIORITY_SPI3               51
 #define NVIC_SW_PERIORITY_UART4              52
@@ -188,7 +256,7 @@ void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uin
 #define NVIC_SW_PERIORITY_CAN2_SCE           66
 #define NVIC_SW_PERIORITY_OTG_FS             67
 
-
+*/
 
 
 

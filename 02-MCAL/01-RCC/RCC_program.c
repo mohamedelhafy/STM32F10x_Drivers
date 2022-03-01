@@ -31,7 +31,7 @@ void RCC_vInitSysClock(void)
 
 		SET_BIT(RCC_CR , RCC_HSEON);				// Enable the HSE 
 		while(IS_BIT_CLEAR(RCC_CR ,RCC_HSERDY));	// Wait till the Hardware set the ready bit
-		CLR_BIT(RCC_CR , RCC_HSEBYP);				// Make sure to clear the ByPass Bit 
+		CLR_BIT(RCC_CR , RCC_HSEPYB);				// Make sure to clear the ByPass Bit 
 		SET_BIT(RCC_CR , RCC_CSSON);				// Enable the Clock security System circuit
 		SET_BIT(RCC_CFGR, RCC_SW0);
 
@@ -39,7 +39,7 @@ void RCC_vInitSysClock(void)
 
 		SET_BIT(RCC_CR , RCC_HSEON);				// Enable The HSE
 		while(IS_BIT_CLEAR(RCC_CR ,RCC_HSERDY));	// Wait till the Hardware set the ready bit
-		SET_BIT(RCC_CR , RCC_HSEBYP);				// Set ByPass to RC circuit
+		SET_BIT(RCC_CR , RCC_HSEPYB);				// Set ByPass to RC circuit
 		SET_BIT(RCC_CR , RCC_CSSON);				// Enable the Clock security System circuit
 		SET_BIT(RCC_CFGR, RCC_SW0);
 		CLR_BIT(RCC_CFGR, RCC_SW1);
