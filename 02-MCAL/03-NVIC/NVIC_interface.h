@@ -72,18 +72,6 @@ uint8 NVIC_u8GetActiveFlag(E_PinPerioity_t copy_u8IntNumber);
 
 
 
-/********************************************************************************************************/
-/*	Function Name        : NVIC_vSetGroupSubgroupComp                                                   */
-/*	Function Returns     : void                                                                         */
-/*	Function Arguments   : signed char copy_s8IntId unsigned char copy_u8periority                      */
-/*	Function Description : Get Active Flag that told me if this int is executed                         */
-/********************************************************************************************************/
-void NVIC_vSetGroupSubgroupComp(uint32 copy_u32GroupSubgroupComp);
-
-
-
-
-
 
 
 
@@ -91,7 +79,7 @@ void NVIC_vSetGroupSubgroupComp(uint32 copy_u32GroupSubgroupComp);
 /*	Function Name        : NVIC_vSetGroupSubType                                                        */
 /*	Function Returns     : void                                                                         */
 /*	Function Arguments   : unsigned long copy_u32GroupSubgroupType                                      */
-/*	Function Description : Set Sw periority                                                             */
+/*	Function Description : Set Sw periorityTypes                                                        */
 /********************************************************************************************************/
 void NVIC_vSetGroupSubType(uint32 copy_u32GroupSubgroupType);
 
@@ -104,10 +92,10 @@ void NVIC_vSetGroupSubType(uint32 copy_u32GroupSubgroupType);
 /********************************************************************************************************/
 /*	Function Name        : NVIC_vSetSWPeriority                                                         */
 /*	Function Returns     : void                                                                         */
-/*	Function Arguments   : signed char copy_s8IntId unsigned char copy_u8periority                      */
+/*	Function Arguments   : unsigned char copy_u8IntId unsigned char copy_u8periority                    */
 /*	Function Description : Set Sw periority                                                             */
 /********************************************************************************************************/
-void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uint8 copy_u8SubgroupPeriority);
+void NVIC_vSetSWPeriority(uint8 copy_u8IntId , uint8 copy_u8Periority);
 
 
 

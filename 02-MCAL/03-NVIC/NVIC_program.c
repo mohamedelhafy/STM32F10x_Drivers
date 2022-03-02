@@ -237,21 +237,19 @@ void NVIC_vSetGroupSubType(uint32 copy_u32GroupSubgroupType)
 /********************************************************************************************************/
 /*	Function Name        : NVIC_vSetSWPeriority                                                         */
 /*	Function Returns     : void                                                                         */
-/*	Function Arguments   : signed char copy_s8IntId unsigned char copy_u8periority                      */
+/*	Function Arguments   : unsigned char copy_u8IntId unsigned char copy_u8periority                    */
 /*	Function Description : Set Sw periority                                                             */
 /********************************************************************************************************/
-void NVIC_vSetSWPeriority(sint8 copy_s8IntId , uint8 copy_u8GroupPeriority , uint8 copy_u8SubgroupPeriority)
+void NVIC_vSetSWPeriority(uint8 copy_u8IntId , uint8 copy_u8Periority)
 {
-	uint8 Loc_u8Periority = copy_u8SubgroupPeriority|copy_u8GroupPeriority ;
-	
 	/* External peripheral */
 
-	if (copy_s8IntId >= 0)
+	if (copy_u8IntId <= 67)
 	{
-		NVIC_IPR[copy_s8IntId] = Loc_u8Periority << 4 ; // Set periority for InId
+		NVIC_IPR[copy_s8IntId] = copy_u8Periority << 4 ; // Set periority for InId
 	}
 	else
 	{
-		/* core peripheral */
+		/* Return Error */
 	}
 }
