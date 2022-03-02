@@ -34,9 +34,9 @@
 void STK_vInit(void)
 {
 	#if CLK_SRC == AHB
-		STK->CTRL.ClkSource =  0;
+		STK->CTRL.ClkSource =  0; // Set the Clk source as AHB clk
 	#else
-		STK->CTRL.ClkSource =  1;
+		STK->CTRL.ClkSource =  1; // Set the Clk source as AHB/8 
 	#endif
 }
 
@@ -58,11 +58,11 @@ void STK_vInit(void)
 /********************************************************************************************************/
 void STK_vSetBuyWait(uint32 copy_u32Ticks)
 {
-	STK->LOAD = copy_u32Ticks;
-	STK->CTRL.TicInt = 0;
-	STK->CTRL.Enable = 1;
-	while(!STK->CTRL.CountFlag);
-	STK->CTRL.Enable = 0;
+	STK->LOAD = copy_u32Ticks;     // Load the Value to load Reg
+	STK->CTRL.TicInt = 0;          // Disable the SysTick interrupt
+	STK->CTRL.Enable = 1;          // Enable the SysTick and start Count 
+	while(!STK->CTRL.CountFlag);   // wait till the flag raised 
+	STK->CTRL.Enable = 0;          // Disable the STK
 }
 
 
@@ -82,10 +82,10 @@ void STK_vSetBuyWait(uint32 copy_u32Ticks)
 /********************************************************************************************************/
 void STK_vSetIntervalSingle(uint32 copy_u32Ticks ,void (*copySTK_fCallBack)(void))
 {
-	STK->LOAD = copy_u32Ticks;
-	STK->CTRL.TicInt = 1;
-	STK->CTRL.Enable = 1;
-	STK_callBack = copySTK_fCallBack;
+	STK->LOAD = copy_u32Ticks;         // Load the Value to load Reg
+	STK->CTRL.TicInt = 1;              // Enable the SysTick interrupt
+	STK->CTRL.Enable = 1;              // Enable the SysTick and start Count 
+	STK_callBack = copySTK_fCallBack;  // Set the Call Back Func to call it in the ISR
 }
 
 
@@ -105,10 +105,10 @@ void STK_vSetIntervalSingle(uint32 copy_u32Ticks ,void (*copySTK_fCallBack)(void
 /********************************************************************************************************/
 void STK_vSetIntervalPeriodic(uint32 copy_u32Ticks ,void (*copySTK_fCallBack)(void))
 {
-	STK->LOAD = copy_u32Ticks;
-	STK->CTRL.TicInt = 1;
-	STK->CTRL.Enable = 1;
-	STK_callBack = copySTK_fCallBack;
+	STK->LOAD = copy_u32Ticks;         // Load the Value to load Reg
+	STK->CTRL.TicInt = 1;              // Enable the SysTick interrupt
+	STK->CTRL.Enable = 1;              // Enable the SysTick and start Count 
+	STK_callBack = copySTK_fCallBack;  // Set the Call Back Func to call it in the ISR
 }
 
 
@@ -128,7 +128,7 @@ void STK_vSetIntervalPeriodic(uint32 copy_u32Ticks ,void (*copySTK_fCallBack)(vo
 /********************************************************************************************************/
 void STK_vStopTimer(void)
 {
-	STK->CTRL.Enable = 0;
+	STK->CTRL.Enable = 0;  // Disable the STK
 }
 
 
@@ -148,7 +148,7 @@ void STK_vStopTimer(void)
 /********************************************************************************************************/
 uint32 STK_u32GetElapsedTime(void)
 {
-	return (STK->LOAD - STK->VAL);
+	return ((STK->LOAD) - (STK->VAL)); // Return Load Reg - Value Reg
 }
 
 
@@ -168,7 +168,7 @@ uint32 STK_u32GetElapsedTime(void)
 /********************************************************************************************************/
 uint32 STK_u32GetRemainingTime(void)
 {
-	return STK->VAL;
+	return STK->VAL;    // Return Value Reg
 }
 
 
@@ -185,5 +185,5 @@ uint32 STK_u32GetRemainingTime(void)
 /********************************************************************************************************/
 void SysTick_Handler(void)
 {
-	STK_callBack();
+	STK_callBack();   // Call the Call Back Function 
 }
