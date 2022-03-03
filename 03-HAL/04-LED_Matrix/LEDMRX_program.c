@@ -129,7 +129,7 @@ void LEDMRX_vInit(void)
 /*	Function Name        : LEDMRX_vInit                                                                 */
 /*	Function Returns     : void                                                                         */
 /*	Function Arguments   : void                                                                         */
-/*	Function Description : Init the LED_Matrix 8*8                                                      */
+/*	Function Description : Print data on                                                                */
 /********************************************************************************************************/
 void LEDMRX_vDisplay(uint8 *Copy_u8Data)
 {
