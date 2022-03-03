@@ -7,15 +7,6 @@
 
 
 
-/********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
-/********************************************************************************************************/
-
-
-
 #ifndef EXTI_INTERFACE_H
 #define EXTI_INTERFACE_H
 
@@ -45,26 +36,26 @@ typedef enum
 
 typedef enum 
 {
-	LINE0 = 0,
-	LINE1    ,
-	LINE2    ,
-	LINE3    ,
-	LINE4    ,
-	LINE5    ,
-	LINE6    ,
-	LINE7    ,
-	LINE8    ,
-	LINE9    ,
-	LINE10   ,
-	LINE11   ,
-	LINE12   ,
-	LINE13   ,
-	LINE14   ,
-	LINE15   ,
-	LINE16   ,
-	LINE17   ,
-	LINE18   ,
-	LINE19   
+	LINE0 = 0  ,
+	LINE1      ,
+	LINE2      ,
+	LINE3      ,
+	LINE4      ,
+	LINE5      ,
+	LINE6      ,
+	LINE7      ,
+	LINE8      ,
+	LINE9      ,
+	LINE10     ,
+	LINE11     ,
+	LINE12     ,
+	LINE13     ,
+	LINE14     ,
+	LINE15     ,
+	LINE16_PVD ,
+	LINE17_RTC ,
+	LINE18_USB ,
+	LINE19_ETH   
 }E_Line_t;
 
 
@@ -72,12 +63,13 @@ typedef enum
 
 
 /********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
+/*	Function Name        : EXTI_vEnableEXTI                                                             */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : E_Line_t copy_E_Line E_Port_t copy_E_Port E_State_t copy_E_Mode              */
+/*                         void (* copyEXTI_fCallBake)(void)                                            */
+/*	Function Description : Enable Interupt And srt the Call Back                                        */
 /********************************************************************************************************/
-void EXTI_vEnableEXTI(E_Line_t copy_E_Line, E_Port_t copy_E_Port, E_State_t copy_E_Mode);
+void EXTI_vEnableEXTI(E_Line_t copy_E_Line, E_Port_t copy_E_Port, E_State_t copy_E_Mode, void (* copyEXTI_fCallBake)(void));
 
 
 
@@ -87,10 +79,10 @@ void EXTI_vEnableEXTI(E_Line_t copy_E_Line, E_Port_t copy_E_Port, E_State_t copy
 
 
 /********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
+/*	Function Name        : EXTI_vDisableEXTI                                                            */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : E_Line_t copy_E_Line                                                         */
+/*	Function Description : Disable the Interupt                                                         */
 /********************************************************************************************************/
 void EXTI_vDisableEXTI(E_Line_t copy_E_Line);
 
@@ -103,10 +95,10 @@ void EXTI_vDisableEXTI(E_Line_t copy_E_Line);
 
 
 /********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
+/*	Function Name        : EXTI_vSwTrigger                                                              */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : E_Line_t copy_E_Line                                                         */
+/*	Function Description : Det the SW pending Flag to force the interrupt                               */
 /********************************************************************************************************/
 void EXTI_vSwTrigger(E_Line_t copy_E_Line);
 

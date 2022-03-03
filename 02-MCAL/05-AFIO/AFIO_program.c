@@ -12,7 +12,7 @@
 #include "BIT_MATH.h"
 
 /**************LOWER_LAYERS***************/
-
+#include "RCC_interface.h"
 
 
 /**************MY_HADER_FILES*************/
@@ -37,6 +37,7 @@
 /********************************************************************************************************/
 void AFIO_vSetEXTIConfigration(uint8 copy_u8Line, uint8 copy_u8PortMap)
 {
+	RCC_vEnableClock(RCC_APB2, RCC_AFIO_EN);
 	AFIO->EXTICR[copy_u8Line >> 2] & = ~(0b1111 << (copy_u8Line & 0b11));
 	AFIO->EXTICR[copy_u8Line >> 2] | = ((copy_u8PortMap) << (copy_u8Line & 0b11));
 }

@@ -2,6 +2,7 @@
 /* Author  : Mohamed Farag Elhafy                                                         */
 /* Date    : 27 FEB 2022                                                                  */
 /* Version : V01                                                                          */
+/* Futur DEVS : Handle the ISRs                                                           */
 /******************************************************************************************/
 
 
@@ -26,12 +27,13 @@
 
 
 /********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
+/*	Function Name        : EXTI_vEnableEXTI                                                             */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : E_Line_t copy_E_Line E_Port_t copy_E_Port E_State_t copy_E_Mode              */
+/*                         void (* copyEXTI_fCallBake)(void)                                            */
+/*	Function Description : Enable Interupt And srt the Call Back                                        */
 /********************************************************************************************************/
-void EXTI_vEnableEXTI(E_Line_t copy_E_Line, E_Port_t copy_E_Port, E_State_t copy_E_Mode)
+void EXTI_vEnableEXTI(E_Line_t copy_E_Line, E_Port_t copy_E_Port, E_State_t copy_E_Mode, void (* copyEXTI_fCallBake)(void))
 {
 	switch(copy_E_Mode)
 	{
@@ -52,12 +54,11 @@ void EXTI_vEnableEXTI(E_Line_t copy_E_Line, E_Port_t copy_E_Port, E_State_t copy
 
 
 
-
 /********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
+/*	Function Name        : EXTI_vDisableEXTI                                                            */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : E_Line_t copy_E_Line                                                         */
+/*	Function Description : Disable the Interupt                                                         */
 /********************************************************************************************************/
 void EXTI_vDisableEXTI(E_Line_t copy_E_Line)
 {
@@ -72,10 +73,10 @@ void EXTI_vDisableEXTI(E_Line_t copy_E_Line)
 
 
 /********************************************************************************************************/
-/*	Function Name        :  */
-/*	Function Returns     :  */
-/*	Function Arguments   :  */
-/*	Function Description :  */
+/*	Function Name        : EXTI_vSwTrigger                                                              */
+/*	Function Returns     : void                                                                         */
+/*	Function Arguments   : E_Line_t copy_E_Line                                                         */
+/*	Function Description : Det the SW pending Flag to force the interrupt                               */
 /********************************************************************************************************/
 void EXTI_vSwTrigger(E_Line_t copy_E_Line)
 {

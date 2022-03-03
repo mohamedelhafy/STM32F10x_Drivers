@@ -18,12 +18,12 @@
 
 typedef struct 
 {
-	uint32 IMR   ;
-	uint32 EMR   ;
-	uint32 RSTR  ;
-	uint32 FTSR  ;
-	uint32 SWIER ;
-	uint32 PR    ;
+	volatile uint32 IMR   ;
+	volatile uint32 EMR   ;
+	volatile uint32 RTSR  ;
+	volatile uint32 FTSR  ;
+	volatile uint32 SWIER ;
+	volatile uint32 PR    ;
 }EXTI_t;
 
 

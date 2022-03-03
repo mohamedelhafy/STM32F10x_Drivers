@@ -14,10 +14,10 @@
 
 typedef struct 
 {
-	uint32 EVCR     ;
-	uint32 MAPR1    ;
-	uint32 EXTICR[4];
-	uint32 MAPR2    ;
+	volatile uint32 EVCR     ;
+	volatile uint32 MAPR1    ;
+	volatile uint32 EXTICR[4];
+	volatile uint32 MAPR2    ;
 }APIO_t;
 
 

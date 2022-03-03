@@ -95,7 +95,7 @@ typedef enum
 /*	Function Arguments   : unsigned char portName unsigned char pinNumber unsigned char mode             */
 /*	Function Description : Set pin Mode                                                                  */
 /*********************************************************************************************************/
-void GPIO_vSetPinMode(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_u8Mode);
+void GPIO_vSetPinMode(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber, uint8 copy_u8Mode);
 
 
 
@@ -106,7 +106,7 @@ void GPIO_vSetPinMode(uint8 copy_u8PortName, uint8 copy_u8PinNumber, uint8 copy_
 /*	Function Arguments   : unsigned char portName unsigned char pinNumber unsigned char valwe            */
 /*	Function Description : Set pin value                                                                 */
 /*********************************************************************************************************/
-void GPIO_vWritePin(uint8 portName, uint8 pinNumer, uint8 value);
+void GPIO_vWritePin(portName_t portName, pinNumber_t pinNumer, uint8 value);
 
 
 
@@ -118,7 +118,7 @@ void GPIO_vWritePin(uint8 portName, uint8 pinNumer, uint8 value);
 /*	Function Arguments	: unsigned char portName unsigned char copy_u8PinNumber 						*/
 /*	Function Description: Return Pin value                                                              */
 /********************************************************************************************************/
-uint8 GPIO_u8GetPinVal(uint8 portName, uint8 pinNumer);
+uint8 GPIO_u8GetPinVal(portName_t portName, pinNumber_t pinNumer);
 
 
 
@@ -131,7 +131,7 @@ uint8 GPIO_u8GetPinVal(uint8 portName, uint8 pinNumer);
 /*	Function Arguments	: unsigned char copy_u8PortName unsigned char copy_u8PinNumber					*/
 /*	Function Description: toggle the Pin 																*/
 /********************************************************************************************************/
-void GPIO_vToggle(uint8 copy_u8PortName, uint8 copy_u8PinNumber);
+void GPIO_vToggle(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber);
 
 
 
@@ -144,7 +144,7 @@ void GPIO_vToggle(uint8 copy_u8PortName, uint8 copy_u8PinNumber);
 /*	Function Arguments	: unsigned char copy_u8PortName unsigned char copy_u8PinNumber                  */
 /*	Function Description: Lock the Mode of Pin                                                          */
 /********************************************************************************************************/
-void GPIO_vLockPin(uint8 copy_u8PortName, uint8 copy_u8PinNumber);
+void GPIO_vLockPin(portName_t copy_u8PortName, pinNumber_t copy_u8PinNumber);
 
 
 
@@ -156,7 +156,7 @@ void GPIO_vLockPin(uint8 copy_u8PortName, uint8 copy_u8PinNumber);
 /*	Function Arguments	: unsigned char copy_u8PortName                                                 */
 /*	Function Description: Enable clock For port                                                         */
 /********************************************************************************************************/
-void GPIO_vEnablePort(uint8 copy_u8PortName);
+void GPIO_vEnablePort(portName_t copy_u8PortName);
 
 
 
@@ -169,7 +169,7 @@ void GPIO_vEnablePort(uint8 copy_u8PortName);
 /*	Function Arguments	: unsigned char copy_u8PortName                                                 */
 /*	Function Description: Disable clock For port                                                        */
 /********************************************************************************************************/
-void GPIO_vDisablePort(uint8 copy_u8PortName);
+void GPIO_vDisablePort(portName_t copy_u8PortName);
 
 
 

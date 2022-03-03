@@ -18,12 +18,12 @@ void (*STK_callBack)(void);
 
 
 typedef struct{
-    u32 Enable    : 1 ;
-    u32 TicInt    : 1 ;
-    u32 ClkSource : 1 ;
-    u32 Reserved  : 13;
-    u32 CountFlag : 1 ;
-    u32 Reserved2 : 15;
+    volatile uint32 Enable    : 1 ;
+    volatile uint32 TicInt    : 1 ;
+    volatile uint32 ClkSource : 1 ;
+    volatile uint32 Reserved  : 13;
+    volatile uint32 CountFlag : 1 ;
+    volatile uint32 Reserved2 : 15;
 }u32_STK_CTRL_Reg;
 
 
@@ -33,10 +33,10 @@ typedef struct{
 
 typedef struct 
 {
-	u32_STK_CTRL_Reg     CTRL ;
-	uint32               LOAD ;
-	uint32               VAL  ;
-	uint32               CALIB;
+	volatile u32_STK_CTRL_Reg     CTRL ;
+	volatile uint32               LOAD ;
+	volatile uint32               VAL  ;
+	volatile uint32               CALIB;
 }STK_Reg_t;
 
 #define STK       ((volatile STK_Reg_t *)(STK_BASE_ADDRESS))
